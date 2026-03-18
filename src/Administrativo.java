@@ -5,8 +5,10 @@ public class Administrativo extends Empleado{
     public Administrativo() {
     }
     //super() invoca el constructor de la super clase
-    public Administrativo(String nombre, int edad, double salarioBase, double bonificacion) {
-        super(nombre, edad, salarioBase);
+
+
+    public Administrativo(String nombre, int edad, double salarioBase, int codigo, double bonificacion) {
+        super(nombre, edad, salarioBase, codigo);
         this.bonificacion = bonificacion;
     }
 

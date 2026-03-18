@@ -2,14 +2,16 @@ public class Empleado {
     protected String nombre;
     protected int edad;
     protected  double salarioBase;
+    protected int codigo;
 
     public Empleado() {
     }
 
-    public Empleado(String nombre, int edad, double salarioBase) {
+    public Empleado(String nombre, int edad, double salarioBase, int codigo) {
         this.nombre = nombre;
         this.edad = edad;
         this.salarioBase = salarioBase;
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -36,10 +38,19 @@ public class Empleado {
         this.salarioBase = salarioBase;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
     @Override
     public String toString() {
         return '\n'+
-                ""+'\n'
+                ""+'\n'+
+                "Codigo ▶"+ codigo+'\n'
                 +"Empleado{" +
                 "nombre='" + nombre + '\'' +
                 ", edad=" + edad +

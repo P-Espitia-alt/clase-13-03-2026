@@ -5,8 +5,8 @@ public class Ventas extends Empleado{
     public Ventas() {
     }
 
-    public Ventas(String nombre, int edad, double salarioBase, double totalVentasMes, double porcentajeComision) {
-        super(nombre, edad, salarioBase);
+    public Ventas(String nombre, int edad, double salarioBase, int codigo, double totalVentasMes, double porcentajeComision) {
+        super(nombre, edad, salarioBase, codigo);
         this.totalVentasMes = totalVentasMes;
         this.porcentajeComision = porcentajeComision;
     }

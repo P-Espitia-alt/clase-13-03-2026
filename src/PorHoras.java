@@ -5,8 +5,8 @@ public class PorHoras extends Empleado{
     public PorHoras() {
     }
 
-    public PorHoras(String nombre, int edad, double salarioBase, double horasTrabajadas, double valorHora) {
-        super(nombre, edad, salarioBase);
+    public PorHoras(String nombre, int edad, double salarioBase, int codigo, double horasTrabajadas, double valorHora) {
+        super(nombre, edad, salarioBase, codigo);
         this.horasTrabajadas = horasTrabajadas;
         this.valorHora = valorHora;
     }
