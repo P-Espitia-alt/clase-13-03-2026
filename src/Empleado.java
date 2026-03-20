@@ -2,16 +2,16 @@ public class Empleado {
     protected String nombre;
     protected int edad;
     protected  double salarioBase;
-    protected int codigo;
+    protected int cedula;
 
     public Empleado() {
     }
 
-    public Empleado(String nombre, int edad, double salarioBase, int codigo) {
+    public Empleado(String nombre, int edad, double salarioBase, int cedula) {
         this.nombre = nombre;
         this.edad = edad;
         this.salarioBase = salarioBase;
-        this.codigo = codigo;
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -38,20 +38,20 @@ public class Empleado {
         this.salarioBase = salarioBase;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getCedula() {
+        return cedula;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
     }
 
     @Override
     public String toString() {
         return '\n'+
                 ""+'\n'+
-                "Codigo ▶"+ codigo+'\n'
-                +"Empleado{" +
+                "Cedula ▶"+cedula+'\n'+
+                "Empleado{" +
                 "nombre='" + nombre + '\'' +
                 ", edad=" + edad +
                 ", salarioBase=" + salarioBase +
@@ -62,6 +62,8 @@ public class Empleado {
                 +" Edad:"+edad+'\n'
                 +" Salario Base:"+salarioBase);
     }
-
+    public double calcularSalario(){
+        return 0.0;
+    }
 
 }

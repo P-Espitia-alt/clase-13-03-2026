@@ -44,4 +44,9 @@ public class PorHoras extends Empleado{
                 +" Horas Trabajadas:"+horasTrabajadas+'\n'
                 +" Valor Por Hora:"+valorHora);
     }
+    @Override
+    public double calcularSalario(){
+        double salarioC=(getSalarioBase()+(getHorasTrabajadas()*getValorHora()));
+        return salarioC;
+    }
 }

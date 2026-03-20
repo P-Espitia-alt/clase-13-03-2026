@@ -31,8 +31,8 @@ public class Ventas extends Empleado{
     public String toString() {
         return super.toString()+'\n'
                 +"Ventas{" +'\n'
-                +"totalVentasMes=" + totalVentasMes +'\n'
-                +"porcentajeComision=" + porcentajeComision +
+                +"Total de ventas este mes:" + totalVentasMes +'\n'
+                +"Porcentaje de Comision=" + porcentajeComision +
                 '}';
     }
 
@@ -46,5 +46,12 @@ public class Ventas extends Empleado{
                 +" Salario Base:"+salarioBase+'\n'
                 +" Total de ventas este mes:"+totalVentasMes
                 +" Comision:"+porcentajeComision);
+    }
+
+    @Override
+    public double calcularSalario(){
+        double decimalP= getPorcentajeComision()/100;
+        double salarioC=(getSalarioBase()+(getSalarioBase()*getTotalVentasMes()*decimalP));
+        return salarioC;
     }
 }

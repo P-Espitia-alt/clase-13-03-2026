@@ -20,6 +20,8 @@ public class Administrativo extends Empleado{
         this.bonificacion = bonificacion;
     }
 
+
+
     @Override
     public String toString() {
         return super.toString()+'\n'
@@ -35,5 +37,11 @@ public class Administrativo extends Empleado{
                 +" Edad:"+edad+'\n'
                 +" Salario Base:"+salarioBase+'\n'
                 +" Bonificacion:"+bonificacion);
+    }
+
+    @Override
+    public double calcularSalario(){
+        double salarioC = (getSalarioBase()+getBonificacion());
+        return salarioC;
     }
 }

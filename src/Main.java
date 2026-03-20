@@ -12,9 +12,7 @@ public class Main {
                     "Digite la opcion que desee:"+'\n'+
                     "1. Registrar Empleado."+'\n'+
                     "2. Mostrar Empleados."+'\n'+
-                    "3. Buscar por codigo."+'\n'+
-                    "4. Aumentar Salario Base."+'\n'+
-                    "5. Mostrar Empleados Mayores de Edad."+'\n'+
+                    "3. Buscar Empleado, Modificar Salario Base y Calcular Salario Bruto"+'\n'+
                     "0. Salir");
             System.out.print("Su eleccion: ");
             op0= tc.nextInt();
@@ -36,7 +34,6 @@ public class Main {
                     op1=tc.nextInt();
                     switch (op1){
                         case 1:
-                            int codigoA=0;
                             tc.nextLine();
                             System.out.println("");
                             System.out.println("1. Empleado Administrativo");
@@ -46,16 +43,18 @@ public class Main {
                             String nA=tc.nextLine();
                             System.out.print("Edad: ");
                             int eA=tc.nextInt();
+                            System.out.print("Cedula: ");
+                            int cedulaA= tc.nextInt();
                             System.out.print("Salario Base: ");
                             double sbA=tc.nextDouble();
                             System.out.print("Bonificacion: ");
                             double  bA=tc.nextDouble();
 
-                            Empleado empA = new Administrativo(nA, eA, sbA, codigoA, bA);
+                            Empleado empA = new Administrativo(nA, eA, sbA, cedulaA, bA);
                             empleadosList.add(empA);
                             break;
                         case 2:
-                            int codigoV=0;
+
                             tc.nextLine();
                             System.out.println("");
                             System.out.println("2. Empleado de Ventas");
@@ -65,19 +64,21 @@ public class Main {
                             String nV=tc.nextLine();
                             System.out.print("Edad: ");
                             int eV=tc.nextInt();
+                            System.out.print("Cedula: ");
+                            int cedulaV= tc.nextInt();
                             System.out.print("Salario Base: ");
                             double sbV=tc.nextDouble();
                             System.out.print("Total de Ventas Este Mes: ");
                             double  vmV=tc.nextDouble();
-                            System.out.print("Porcentaje de Comision: ");
+                            System.out.print("Porcentaje de Comision (%): ");
                             double  pV=tc.nextDouble();
 
-                            Empleado empV = new Ventas(nV, eV, sbV, codigoV, vmV, pV);
+                            Empleado empV = new Ventas(nV, eV, sbV, cedulaV, vmV, pV);
                             empleadosList.add(empV);
 
                             break;
                         case 3:
-                            int codigoH=0;
+
                             tc.nextLine();
                             System.out.println("");
                             System.out.println("3. Empleado Por Horas");
@@ -87,14 +88,16 @@ public class Main {
                             String nH=tc.nextLine();
                             System.out.print("Edad: ");
                             int eH=tc.nextInt();
+                            System.out.print("Cedula: ");
+                            int cedulaH= tc.nextInt();
                             System.out.print("Salario Base: ");
                             double sbH=tc.nextDouble();
-                            System.out.println("Horas Trabajadas");
+                            System.out.print("Horas Trabajadas: ");
                             double htH= tc.nextDouble();
-                            System.out.println("Valor por Hora");
+                            System.out.print("Valor por Hora: ");
                             double vhH= tc.nextDouble();
 
-                            Empleado empH = new PorHoras(nH, eH, sbH, codigoH, htH, vhH);
+                            Empleado empH = new PorHoras(nH, eH, sbH, cedulaH, htH, vhH);
                             empleadosList.add(empH);
                             break;
                         default:
@@ -106,54 +109,127 @@ public class Main {
                 case 2:
                     System.out.println("");
                     System.out.println("2. Mostrar Empleados.");
-                    for (Empleado p : empleadosList){
-                        System.out.println(p.toString());
+                    System.out.println("Ingrese Segun Corresponda:"+'\n'+
+                            "1. Mostrar Todos Los Empleados"+'\n'+
+                            "2. Mostrar Empleados Administrativos"+'\n'+
+                            "3. Mostrar Empleados De Ventas"+'\n'+
+                            "4. Mostrar Empleados Por Horas");
+                    int op2= tc.nextInt();
+                    switch (op2){
+                        case 1:
+                            if(empleadosList.isEmpty()){
+                                System.out.println("La lista esta vacia");
+                            }
+                            for (Empleado p : empleadosList){
+                                System.out.println(p.toString());
+                            }
+                            break;
+
+                        case 2:
+                            if(empleadosList.isEmpty()){
+                                System.out.println("La lista esta vacia");
+                            }
+                            for(Empleado p : empleadosList){
+                                if (p instanceof Administrativo){
+                                    System.out.println(p);
+                                    break;
+                                }else{
+                                    System.out.println("No Se Registraron Empleados");
+                                }
+                            }
+                            break;
+                        case 3:
+                            if(empleadosList.isEmpty()){
+                            System.out.println("La lista esta vacia");
+                            }
+                            for(Empleado p : empleadosList){
+                                if (p instanceof Ventas){
+                                    System.out.println(p);
+                                    break;
+                                }else{
+                                    System.out.println("No Se Registraron Empleados");
+                                }
+                            }
+                            break;
+                        case 4:
+                            for(Empleado p : empleadosList){
+                                if (p instanceof PorHoras){
+                                    System.out.println(p);
+                                    break;
+                                }else{
+                                    System.out.println("No Se Registraron Empleados");
+                                }
+                            }
+                            break;
+                        default:
+                            System.out.println("Opcion invalida"+'\n'+
+                                    "Intentelo mas tarde. Volviendo al menu principal...");
+                            break;
                     }
+
                     break;
                 case 3:
                     System.out.println("");
-                    System.out.println("3. Buscar por codigo.");
-                    System.out.print("ingrese el codigo ▶ ");
+                    System.out.println("3. Buscar Empleado, Modificar Salario Base y Calcular Salario Bruto.");
+                    System.out.print("Ingrese la cedula del Empleado ▶ ");
                     int buscar= tc.nextInt();
                     if(empleadosList.isEmpty()){
                         System.out.println("La lista esta vacia");
-                    }
-                    for (Empleado p : empleadosList){
-                        if(p.getCodigo() == buscar){
-                            System.out.println(p.toString());
+                        break;
+                    }else{
+                        for (Empleado p : empleadosList){
+                            if(p.getCedula() == buscar){
+                                System.out.println(p.toString());
+                            }
+                        }
+                        while (true){
+                            //unaVezSeBuscaElEmpleadoIngresaALasAcciones
+                            System.out.println('\n'+"Ingrese Segun Corresponda:"+'\n'+
+                                    "1. Aumentar Salario Base"+'\n'+
+                                    "2. Calcular Salario bruto."+'\n'+
+                                    "0. Volver Al Menu Principal");
+                            System.out.print("Su eleccion: ");
+                            int op3= tc.nextInt();
+
+                            if (op3 == 0){
+                                System.out.println("Volviendo al menu principal...");
+                                break;
+                            }
+                            switch (op3){
+                                case 1:
+                                    System.out.println("");
+                                    System.out.println("1. Aumentar Salario Base.");
+                                    if(empleadosList.isEmpty()){
+                                        System.out.println("La lista esta vacia");
+                                    }else{
+                                        for (Empleado p : empleadosList){
+                                            if(p.getCedula()==buscar){
+                                                System.out.print("Nuevo Sabario Base: ");
+                                                p.setSalarioBase(buscar);
+                                                double nsb = tc.nextDouble();
+                                                p.setSalarioBase(nsb);
+                                                System.out.println(p.toString());
+                                            }
+                                        }
+                                    }
+                                    break;
+                                case 2:
+                                    System.out.println("");
+                                    System.out.println("2. Calcular Salario Bruto.");
+                                    for (Empleado p : empleadosList){
+                                        if(p.getCedula()==buscar){
+                                            System.out.println(p.calcularSalario());
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    System.out.println("Opcion invalida."+'\n'+
+                                            "Volviendo Al Menu Principal");
+                                    break;
+                            }
                         }
                     }
-                    break;
-                case 4:
-                    System.out.println("");
-                    System.out.println("4. Aumentar Salario Base.");
-                    System.out.print("Ingrese el Nombre del Empleado"+'\n'+
-                            "Nombre: ");
-                    String buscarN= tc.nextLine();
-                    if(empleadosList.isEmpty()){
-                        System.out.println("La lista esta vacia");
-                    }
-                    for (Empleado p : empleadosList){
-                        if(p.getNombre().equalsIgnoreCase(buscarN)){
-                            System.out.println(p.toString());
-                            System.out.print("Nuevo Sabario Base: ");
-                            double nsb = tc.nextDouble();
-                            p.setSalarioBase(nsb);
-                        }
-                    }
-                    break;
-                case 5:
-                    System.out.println("");
-                    System.out.println("5. Mostrar Empleados Mayores de Edad.");
-                    if(empleadosList.isEmpty()){
-                        System.out.println("La lista esta vacia");
-                    }
-                    for (Empleado p: empleadosList){
-                        if (p.getEdad() >= 18){
-                            System.out.println("Empleados Mayores de Edad:");
-                            System.out.println(p);
-                        }
-                    }
+
                     break;
                 default:
                     System.out.println("Opcion invalida"+'\n'+
